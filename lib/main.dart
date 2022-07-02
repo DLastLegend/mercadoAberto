@@ -7,7 +7,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -15,7 +14,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Mercado das frutas'),
+      home: const MyHomePage(title: 'Mercado Abierto'),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
@@ -42,23 +42,41 @@ class _MyHomePageState extends State<MyHomePage> {
 
     return Scaffold(
       appBar: AppBar(
+        
         backgroundColor: Color(0xfff5d415),
+        shadowColor: Colors.transparent,
 
         leading: Icon(Icons.menu),
-        
-        title: Text(widget.title),
 
-        actions: [
+        title: Text (widget.title),
+
+        actions:<Widget> [
           Icon(Icons.shopping_cart_outlined),
         ],
+
+        bottom: PreferredSize( 
+          preferredSize: Size.fromHeight(30),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: const <Widget>[
+              Icon(Icons.pin_drop_rounded),
+              Text('Enviar para Victor Hugo - Paulo Centrone, 340'), 
+            ], 
+          ),
       ),
-      body: Center(
-
-        child: Column(
-
-          mainAxisAlignment: MainAxisAlignment.center,
         ),
-      ),
-    );
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment(0.5,0.2),
+            colors: <Color>[
+              Color(0xfff5d415),
+             Color(0xfff5f5f5f5),
+            ] 
+            )
+        )
+      )
+      );
   }
 }
